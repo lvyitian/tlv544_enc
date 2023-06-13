@@ -302,12 +302,17 @@ public interface Tlv544Sign {
     {
         if(bytes.length==0) return 0;
         long crc=(long)(Math.pow(2,32)-1);
-        for(short val : bytes)
+        for(byte val : bytes)
         {
-            val^=(byte)crc;
-            crc = (crc >> 8) ^ table[val];
+            short val2=convertToShort(val);
+            val2^=(byte)crc;
+            crc = (crc >> 8) ^ table[val2];
         }
         return ~crc;
+    }
+
+    public static short convertToShort(byte unsignedByte) {
+        return (short) (unsignedByte & 0xFF);
     }
     public static byte[] u32ToBigEndianBytes(long value) {
         byte[] result = new byte[4];
