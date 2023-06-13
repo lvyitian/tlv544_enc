@@ -249,7 +249,7 @@ public interface Tlv544Sign {
     {
         for(int i2=0;i2<x.length;i2++)
         {
-            byte val=x[i2];
+            short val=convertToShort(x[i2]);
             int i=i2<<1;
             int e=val;
             short a = (short) (tab[i & 31][e >> 4] << 4);
@@ -305,7 +305,7 @@ public interface Tlv544Sign {
         for(byte val : bytes)
         {
             short val2=convertToShort(val);
-            val2^=(byte)crc;
+            val2^=convertToShort((byte)crc);
             val2=convertToShort((byte)val2);
             crc = (crc >> 8) ^ table[val2];
         }
