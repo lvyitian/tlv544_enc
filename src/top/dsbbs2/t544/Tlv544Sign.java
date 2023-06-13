@@ -169,7 +169,7 @@ public interface Tlv544Sign {
             long val=t.get(i);
             int i4=i<<2;
             byte[] val_bytes=u32ToLittleEndianBytes(val);
-            for(int j=i4;j<i4+4;j++) tb[j]=val_bytes[j];
+            for(int j=i4;j<i4+4;j++) tb[j]=val_bytes[j-i4];
         }
         for(int i=0;i<4;i++)
         {
