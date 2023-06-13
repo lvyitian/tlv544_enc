@@ -155,9 +155,9 @@ public interface Tlv544Sign {
             if(subList(Arrays.asList(wrapBytes(data)),i<<2).size()>=4)
             {
                 data[i<<2]^=d;
-                data[i<<2+1]^=c;
-                data[i<<2+2]^=b;
-                data[i<<2+3]^=a;
+                data[(i<<2)+1]^=c;
+                data[(i<<2)+2]^=b;
+                data[(i<<2)+3]^=a;
             }else throw new RuntimeException();
         }
     }
@@ -182,9 +182,9 @@ public interface Tlv544Sign {
                 x=tb[x];
                 y=tb[y];
                 data[i<<2]^=v;
-                data[i<<2+1]^=w;
-                data[i<<2+2]^=x;
-                data[i<<2+3]^=y;
+                data[(i<<2)+1]^=w;
+                data[(i<<2)+2]^=x;
+                data[(i<<2)+3]^=y;
             }else throw new RuntimeException();
         }
     }
