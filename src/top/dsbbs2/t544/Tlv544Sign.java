@@ -225,7 +225,7 @@ public interface Tlv544Sign {
     {
         int datum=convertToShort(data[i]);
         int idx = i & 15;
-        int bufdx = buf[idx];
+        int bufdx = convertToShort(buf[idx]);
         short[][][] tb=table[idx];
         short a = (short) (tb[0][datum >> 4][bufdx >> 4] << 4);
         short b = tb[1][datum & 15][bufdx & 15];
