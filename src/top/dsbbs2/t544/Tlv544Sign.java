@@ -117,7 +117,7 @@ public interface Tlv544Sign {
         for(int i=0;i<output.length;i++)
         {
             if((i & 15) == 0) {
-            for(int i2=0;i2<buf.length;i2++) buf[i]=(byte)(short)ktb.get(i);
+            for(int i2=0;i2<buf.length;i2++) buf[i2]=(byte)(short)ktb.get(i2);
             _tencent_enc_b(buf, ENC_TRB);
             for(int j=ktb.size()-1;j>-1;j--){
                 ktb.set(j,ubyteWrappingAdd(ktb.get(j),(short)1));
