@@ -304,7 +304,7 @@ public interface Tlv544Sign {
         long crc=(long)(Math.pow(2,32)-1);
         for(short val : bytes)
         {
-            val^=crc;
+            val^=(byte)crc;
             crc = (crc >> 8) ^ table[val];
         }
         return ~crc;
