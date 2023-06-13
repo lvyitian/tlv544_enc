@@ -192,7 +192,7 @@ public interface Tlv544Sign {
     {
         for(int i=0;i<16;i++)
         {
-            int datum=data[i];
+            int datum=convertToShort(data[i]);
             short[] tab=t[datum>>4];
             data[i]= (byte) tab[datum & 15];
         }
