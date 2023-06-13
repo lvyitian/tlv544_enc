@@ -212,7 +212,7 @@ public interface Tlv544Sign {
             int i4=i<<2;
             if(Arrays.asList(wrapBytes(data)).subList(i4,i4+4).size()>=4)
             {
-                byte a=data[i4],b=data[i4+1],c=data[i4+2],d=data[i4+3];
+                short a=convertToShort(data[i4]),b=convertToShort(data[i4+1]),c=convertToShort(data[i4+2]),d=convertToShort(data[i4+3]);
                 short[] ta=t[a],tb=t[b],tc=t[c],td=t[d];
                 data[i4] = (byte) ((c ^ d) ^ (ta[0] ^ tb[1]));
                 data[i4 + 1] = (byte) ((a ^ d) ^ (tb[0] ^ tc[1]));
@@ -223,7 +223,7 @@ public interface Tlv544Sign {
     }
     public static byte sub_aa(int i,short[][][][] table,byte[] buf,byte[] data)
     {
-        int datum=data[i];
+        int datum=convertToShort(data[i]);
         int idx = i & 15;
         int bufdx = buf[idx];
         short[][][] tb=table[idx];
