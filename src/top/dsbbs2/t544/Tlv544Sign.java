@@ -356,7 +356,7 @@ public interface Tlv544Sign {
             for(int i=0;i<state.state.length;i++){
                 long val=state.state[i];
                 byte[] vb=longToLittleEndianBytes(val);
-                for(int j=i<<2;j<(i+1)<<2;j++) sb[j]=vb[j-i<<2];
+                for(int j=(i<<2);j<((i+1)<<2);j++) sb[j]=vb[j-(i<<2)];
             }
             while(state.p<=64&&len!=0){
                 data.set(cnt, (byte) (data.get(cnt)^sb[state.p]));
