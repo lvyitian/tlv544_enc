@@ -306,6 +306,7 @@ public interface Tlv544Sign {
         {
             short val2=convertToShort(val);
             val2^=(byte)crc;
+            val2=convertToShort((byte)val2);
             crc = (crc >> 8) ^ table[val2];
         }
         return ~crc;
